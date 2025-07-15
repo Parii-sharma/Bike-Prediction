@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Price Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+   
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+main {
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.description {
+    text-align: center;
+}
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #3e8e41;
+}
+
+.disclaimer {
+    font-size: 0
+}
+.Prediction{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+}
+</style>
+<body>
+    <header>
+        <h1>Bike Price Prediction</h1>
+    </header>
+    <main>
+        <section class="description">
+            <h2>Welcome to the Bike Price Prediction Tool!</h2>
+            <p>This website helps you estimate the value of your used bike based on various factors.</p>
+        </section>
+        <section class="form-container">
+            <h3>Enter Bike Details</h3>
+<form action="{{ url_for('predict') }}" method="post" id="bikeForm">
+    <label for="brand">Brand:</label>
+    <select name="brand_name" id="brand_name" required="required">
+        <option value="Royal Enfield" {% if brand_name=='Royal Enfield' %}selected{% endif %}>Royal Enfield</option>
+        <option value="KTM" {% if brand_name=='KTM' %}selected{% endif %}>KTM</option>
+        <option value="Bajaj" {% if brand_name=='Bajaj' %}selected{% endif %}>Bajaj</option>
+        <option value="Harley" {% if brand_name=='Harley-Davidson' %}selected{% endif %}>Harley-Davidson</option>
+        <option value="Yamaha" {% if brand_name=='Yamaha' %}selected{% endif %}>Yamaha</option>
+        <option value="Honda" {% if brand_name=='Honda' %}selected{% endif %}>Honda</option>
+        <option value="Suzuki" {% if brand_name=='Suzuki' %}selected{% endif %}>Suzuki</option>
+        <option value="TVS" {% if brand_name=='TVS' %}selected{% endif %}>TVS</option>
+        <option value="Kawasaki" {% if brand_name=='Kawasaki' %}selected{% endif %}>Kawasaki</option>
+        <option value="Hyosung" {% if brand_name=='Hyosung' %}selected{% endif %}>Hyosung</option>
+        <option value="Benelli" {% if brand_name=='Benelli' %}selected{% endif %}>Benelli</option>
+        <option value="Mahindra" {% if brand_name=='Mahindra' %}selected{% endif %}>Mahindra</option>
+        <option value="Triumph" {% if brand_name=='Triumph' %}selected{% endif %}>Triumph</option>
+        <option value="Ducati" {% if brand_name=='Ducati' %}selected{% endif %}>Ducati</option>
+        <option value="BMW" {% if brand_name=='BMW' %}selected{% endif %}>BMW</option>
+        <option value="Rajdoot" {% if brand_name=='Rajdoot' %}selected{% endif %}>Rajdoot</option>
+        <option value="Indian" {% if brand_name=='Indian' %}selected{% endif %}>Indian</option>
+        <option value="LML" {% if brand_name=='LML' %}selected{% endif %}>LML</option>
+        <option value="Yezdi" {% if brand_name=='Yezdi' %}selected{% endif %}>Yezdi</option>
+        <option value="MV" {% if brand_name=='MV' %}selected{% endif %}>MV</option>
+        <option value="Ideal" {% if brand_name=='Ideal' %}selected{% endif %}>Ideal</option>
+    </select><br><br>
+    <label for="owner">owner:</label>
+    <select name="owner" id="owner" required="required">
+        <option value="1" {% if owner=='1' %}selected{% endif %}>first owner</option>
+        <option value="2" {% if owner=='2' %}selected{% endif %}>second owner</option>
+        <option value="3" {% if owner=='3' %}selected{% endif %}>third owner</option>
+        <option value="4" {% if owner=='4' %}selected{% endif %}>fourth owner</option>
+    </select><br><br>
+    <label for="age">age:</label>
+    <input type="text" name = 'age' id="age" required value="{{ age|default('') }}">
+    <br><br>
+    <label for="power">power:</label>
+    <input type="text" name = 'power' id="power" required value="{{ power|default('') }}">
+    <br><br>
+    <label for="">kms_driven</label>
+    <input type="text" name ="kms_driven" id="kms_driven" required value="{{ kms_driven|default('') }}">
+    <br><br>
+    <button type="submit">Predict Price</button>
+    <button type="button" onclick="resetFormAndClearFields()" style="background-color:#f44336; margin-left:10px;">Refresh</button>
+</form>
+<script>
+function resetFormAndClearFields() {
+    document.getElementById('bikeForm').reset();
+    document.getElementById('brand_name').selectedIndex = 0;
+    document.getElementById('owner').selectedIndex = 0;
+    document.getElementById('age').value = '';
+    document.getElementById('power').value = '';
+    document.getElementById('kms_driven').value = '';
+    // Hide the prediction result
+    var predDiv = document.querySelector('.Prediction');
+    if(predDiv) predDiv.style.display = 'none';
+}
+// Show prediction again on submit
+window.onload = function() {
+    var form = document.getElementById('bikeForm');
+    if(form) {
+        form.onsubmit = function() {
+            var predDiv = document.querySelector('.Prediction');
+            if(predDiv) predDiv.style.display = '';
+        }
+    }
+}
+</script>
+            <!-- <p class="disclaimer">*Disclaimer:* This is a basic website for demonstration purposes only. A real prediction model would require additional features and machine learning integration.</p>
+        </section> -->
+        <!-- <section class="results">
+            <h2>Predicted Price</h2>
+            <p id="predicted-price">*This is where the predicted price will be displayed.*</p>
+        </section> -->
+    </main>
+    <div class="Prediction">
+    <h2>Bike Price is : {{ prediction }}</h2>
+</div>
+    <footer>
+        <!-- <p>&copy;2024 Bike Price Prediction</p> -->
+    </footer>
+</body>
+</html>

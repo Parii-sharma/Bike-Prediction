@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Abstract bike-themed SVG background */
+        body::before {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            opacity: 0.13;
+            background: url('data:image/svg+xml;utf8,<svg width="100vw" height="100vh" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg"><g><circle cx="200" cy="200" r="60" stroke="%2325d366" stroke-width="8" /><circle cx="400" cy="600" r="60" stroke="%2325d366" stroke-width="8" /><rect x="180" y="180" width="40" height="10" rx="5" fill="%2325d366" /><rect x="380" y="580" width="40" height="10" rx="5" fill="%2325d366" /><path d="M200 200 L400 600" stroke="%2325d366" stroke-width="6" /><path d="M200 200 Q300 400 400 600" stroke="%2325d366" stroke-width="4" fill="none" /><circle cx="300" cy="400" r="18" fill="%2325d366" /></g><g><circle cx="900" cy="300" r="40" stroke="%23128c7e" stroke-width="6" /><circle cx="1100" cy="700" r="40" stroke="%23128c7e" stroke-width="6" /><rect x="880" y="280" width="30" height="8" rx="4" fill="%23128c7e" /><rect x="1080" y="680" width="30" height="8" rx="4" fill="%23128c7e" /><path d="M900 300 L1100 700" stroke="%23128c7e" stroke-width="4" /><path d="M900 300 Q1000 500 1100 700" stroke="%23128c7e" stroke-width="3" fill="none" /><circle cx="1000" cy="500" r="12" fill="%23128c7e" /></g></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+        }
+        .buttonGroup {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            position: relative;
+            margin-top: 40px;
+            z-index: 2;
+        }
+        .buttonGroup a button {
+            font-size: 1.1rem;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.2);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .buttonGroup a button:hover {
+            background: linear-gradient(90deg, #128c7e 0%, #25d366 100%);
+            transform: scale(1.08);
+            box-shadow: 0 8px 32px rgba(18,140,126,0.25);
+        }
+        .bike-img {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 40vw;
+            z-index: 1;
+            opacity: 0.92;
+            filter: drop-shadow(0 8px 32px rgba(31,38,135,0.37));
+        }
+        @media (max-width: 900px) {
+            .bike-img { display: none; }
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header style="background: rgba(0,0,0,0.7); color: #fff; padding: 32px 0; text-align: center; box-shadow: 0 4px 16px rgba(31,38,135,0.18);">
+    <h1 style="font-size:2.5rem; letter-spacing:2px; text-shadow:2px 2px 8px #222;">Welcome to the Bike Price Prediction Tool!</h1>
+</header>
+
+<!-- <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav> -->
+
+<section style="background: rgba(255,255,255,0.85); border-radius: 18px; margin: 40px auto; max-width: 600px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17); padding: 32px; text-align: center;">
+    <h2 style="color:#128c7e; font-size:2rem; margin-bottom:18px;">About Us</h2>
+    <p style="font-size:1.15rem; color:#333;">Discover the future of bike pricing! Our tool uses advanced machine learning to predict the value of your bike, helping you make smart decisions whether you're buying, selling, or just curious. Fast, accurate, and easy to use — get started now!</p>
+</section>
+
+<footer style="background: rgba(0,0,0,0.8); color: #fff; text-align: center; padding: 16px; position: fixed; bottom: 0; width: 100%; font-size:1rem; letter-spacing:1px;">
+    <p>&copy; 2024 Old Bike Shell. All rights reserved.</p>
+</footer>
+<div class="buttonGroup">
+    <a href="project"><button>Let's Predict</button></a>
+    <a href="contact"><button>Contact Us</button></a>
+    <a href="history"><button>Prediction History</button></a>
+</div>
+
+
+</body>
+</html>
