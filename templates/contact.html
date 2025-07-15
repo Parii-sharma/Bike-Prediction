@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+        .container {
+            background: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 60px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        .btn-whatsapp {
+            background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            padding: 12px 32px;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(90deg, #128c7e 0%, #25d366 100%);
+            transform: scale(1.05);
+        }
+        .bike-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #25d366;
+            text-shadow: 2px 2px 8px #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="content">
+        <div class="container text-center">
+            <div class="bike-icon">
+                <!-- Bike SVG Icon -->
+                <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="15" cy="30" r="10" stroke="#25d366" stroke-width="3" fill="none"/>
+                  <circle cx="45" cy="30" r="10" stroke="#25d366" stroke-width="3" fill="none"/>
+                  <rect x="13" y="28" width="8" height="3" rx="1.5" fill="#25d366" />
+                  <rect x="43" y="28" width="8" height="3" rx="1.5" fill="#25d366" />
+                  <path d="M15 30 L30 10 L45 30" stroke="#25d366" stroke-width="2" />
+                  <circle cx="30" cy="10" r="3" fill="#25d366" />
+                </svg>
+            </div>
+            <h2 class="mb-4">Contact Us</h2>
+            <p class="lead">We'd love to hear from you! Reach out for any queries, suggestions, or collaborations.</p>
+            <div class="mb-4">
+                <span style="font-size:1.3rem;">Phone:</span> <strong>9876543212</strong>
+            </div>
+            <a href="tel:9166780327" class="btn btn-whatsapp mb-3" style="background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" style="vertical-align:middle;margin-right:8px;" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"></path></svg>
+                Call Us
+            </a>
+            <a href="sms:9876543212" class="btn btn-whatsapp mb-3" style="background: linear-gradient(90deg, #ff9800 0%, #f44336 100%);margin-left:10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" style="vertical-align:middle;margin-right:8px;" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"></path></svg>
+                Message Us
+            </a>
+            <div class="mt-4">
+                <span style="font-size:1.1rem;">Email:</span> <strong>oldbikeshell@example.com</strong>
+            <!-- Back Button -->
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-outline-light btn-lg" style="border-radius: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: background 0.3s, color 0.3s;">
+                    <span style="font-size: 1.2em;">&#8592; Back to Home</span>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

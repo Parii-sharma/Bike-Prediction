@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+        h1, h2 {
+            text-shadow: 2px 2px 8px #222;
+        }
+        .container {
+            background: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="content">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Old Bike Shell</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="text-center mb-4">About Us</h1>
+            <p>
+                Welcome to <strong>Old Bike Shell</strong> — where every journey begins with a story and every ride is a step toward a greener future! Our project is dedicated to transforming old, forgotten bikes into vibrant companions for adventure, sustainability, and community. We believe that every bike has a soul, and by restoring and repurposing these two-wheeled treasures, we create more than just affordable mobility — we build connections, memories, and a culture of eco-conscious living.<br><br>
+                At Old Bike Shell, innovation meets tradition. Our team combines creative engineering with a passion for cycling, breathing new life into bikes that might otherwise be lost to time. Each restored bike is a symbol of resilience, resourcefulness, and the joy of movement. Whether you’re a daily commuter, a weekend explorer, or someone seeking a unique ride, our mission is to make cycling accessible, stylish, and sustainable for all.<br><br>
+                Join us as we pedal toward a brighter tomorrow — one bike, one story, one community at a time. Rediscover the freedom of the open road and become part of a movement that values the past, celebrates the present, and inspires the future!
+            </p>
+            <!-- Back Button -->
+            <div class="text-center mb-4">
+                <a href="/" class="btn btn-outline-light btn-lg" style="border-radius: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: background 0.3s, color 0.3s;">
+                    <span style="font-size: 1.2em;">&#8592; Back to Home</span>
+                </a>
+            </div>
+            <!-- Bike SVG pattern overlay for creative background -->
+            <div style="position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;">
+                <svg width="100%" height="100%" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.12;">
+                    <g>
+                        <circle cx="200" cy="200" r="60" stroke="#fff" stroke-width="8" />
+                        <circle cx="400" cy="600" r="60" stroke="#fff" stroke-width="8" />
+                        <rect x="180" y="180" width="40" height="10" rx="5" fill="#fff" />
+                        <rect x="380" y="580" width="40" height="10" rx="5" fill="#fff" />
+                        <path d="M200 200 L400 600" stroke="#fff" stroke-width="6" />
+                        <path d="M200 200 Q300 400 400 600" stroke="#fff" stroke-width="4" fill="none" />
+                        <circle cx="300" cy="400" r="18" fill="#fff" />
+                    </g>
+                    <g>
+                        <circle cx="900" cy="300" r="40" stroke="#fff" stroke-width="6" />
+                        <circle cx="1100" cy="700" r="40" stroke="#fff" stroke-width="6" />
+                        <rect x="880" y="280" width="30" height="8" rx="4" fill="#fff" />
+                        <rect x="1080" y="680" width="30" height="8" rx="4" fill="#fff" />
+                        <path d="M900 300 L1100 700" stroke="#fff" stroke-width="4" />
+                        <path d="M900 300 Q1000 500 1100 700" stroke="#fff" stroke-width="3" fill="none" />
+                        <circle cx="1000" cy="500" r="12" fill="#fff" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</body>
+</html>
